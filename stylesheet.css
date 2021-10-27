@@ -68,6 +68,17 @@ a {
     font-weight: 400;
 }
 
+.d-none {
+    display: none;
+}
+
+.text-success {
+    color: rgb(2, 156, 2);
+}
+
+.text-danger {
+    color: rgb(148, 5, 5);
+}
 .banner-text {
     height: 35vh;
     margin:auto;

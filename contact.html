@@ -34,34 +34,37 @@
     </header>
 
     <section class="contact-section">
-        <form class="contact-form">
+        <form class="contact-form" method="POST">
             <div class="form-group">
                 <label>Fullname</label>
 
-                <input class="form-control" type="text" />
+                <input class="form-control" name="fullname" type="text" required maxlength="100"/>
             </div>
 
             <div class="form-group">
                 <label>Email</label>
 
-                <input class="form-control" type="email" />
+                <input class="form-control" name="email" type="email" required maxlength="50"/>
             </div>
 
             <div class="form-group">
                 <label>Subject</label>
 
-                <input class="form-control" type="text" />
+                <input class="form-control" name="subject" type="text" required maxlength="100"/>
             </div>    
             
             <div class="form-group">
                 <label>Message</label>
 
-                <textarea class="form-control" rows="6"></textarea>
+                <textarea class="form-control" name="message" rows="6" required maxlength="255"></textarea>
             </div>    
             
             <div class="form-group btn-wrap">
-                <button class="btn btn-primary">Send</button>
+                <button class="btn btn-primary" type="submit">Send</button>
             </div>
+
+            <div id="message" class="label submit-message d-none"></div>
+
         </form>
     </section>
 
@@ -70,7 +73,77 @@
         <a href="mailto:info@nimdee.co"> <i class="fas fa-envelope"></i> info@nimdee.co</a> 
 
         <a href="https://www.linkedin.com/company/nimdee/"> <i class="fab fa-linkedin-in"></i> Nimdee</a> 
-    </footer>    
+    </footer> 
+    
+    <script>
+        const url = "https://app.nimdee.co/api/website/contact";
+
+        const resHtml = document.querySelector('#message');
+
+        form = document.querySelector('form.contact-form');
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            contactFormSubmit()
+        }, true
+        );
+
+        function contactFormSubmit(){
+            console.log("adl");
+    
+            // Collect the form data while iterating over the inputs
+            var data = {};
+            for (var i = 0, ii = form.length; i < ii; ++i) {
+                var input = form[i];
+                if (input.name) {
+                    data[input.name] = input.value;
+                }
+            }
+
+            fetch(url,{
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept":"application/json",
+                    "Content-Type":"application/json"
+                },                
+            })
+            .then(data => {
+
+                resHtml.classList.add('d-none');
+
+                if (data.ok) {
+
+                    resHtml.classList.add('text-success');
+                    resHtml.classList.remove('text-danger');
+
+                }else{
+                    resHtml.classList.add('text-danger');
+                    resHtml.classList.remove('text-success');
+                }
+
+                return data.json();
+            })
+            .then(res => {
+
+                resHtml.innerHTML = res.msg;
+
+                resHtml.classList.remove('d-none');
+
+            })
+            .catch((error) => {
+
+                resHtml .classList.add('text-danger');
+                resHtml .classList.remove('text-success');
+
+                resHtml.innerHTML = error.msg;
+
+            }); 
+
+            return false;
+        }
+        
+    </script>
 </body>
 
 </html>
