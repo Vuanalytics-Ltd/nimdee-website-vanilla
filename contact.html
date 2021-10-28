@@ -106,6 +106,7 @@
             }
 
             button.innerHTML = "Sending";
+            button.setAttribute("disabled", "disabled");
 
             fetch(url,{
                 method: "POST",
@@ -148,6 +149,8 @@
             }); 
 
             button.innerHTML = "Send";
+
+            button.removeAttribute("disabled");
 
             return false;
         }
