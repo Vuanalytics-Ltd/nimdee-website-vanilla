@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HTML5 Starter Template</title>
+    <title>Nimdee - Contact</title>
     <meta name="description"
         content="Nimdee is a boutique management consulting and advisory firm dedicated to early-to-growth stage strategy for small and medium enterprises in Africa.">
     <meta name="author" content="Adrian Koomson-Barnes">
@@ -77,15 +77,20 @@
     </footer> 
     
     <script>
-        const url = "https://app.nimdee.co/api/website/contact";
+        //const url = "https://app.nimdee.co/api/website/contact";
+
+        const url = "http://app.nimdee.test/api/website/contact";
 
         const resHtml = document.querySelector('#message');
+
+        const button = document.querySelector('.btn-primary');
 
         form = document.querySelector('form.contact-form');
 
         form.addEventListener("submit", function(e) {
             e.preventDefault();
-            contactFormSubmit()
+            contactFormSubmit();
+            e.target.reset();
         }, true
         );
 
@@ -99,6 +104,8 @@
                     data[input.name] = input.value;
                 }
             }
+
+            button.innerHTML = "Sending";
 
             fetch(url,{
                 method: "POST",
@@ -139,6 +146,8 @@
                 resHtml.innerHTML = error.msg;
 
             }); 
+
+            button.innerHTML = "Send";
 
             return false;
         }
