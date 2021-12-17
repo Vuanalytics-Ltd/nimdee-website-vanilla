@@ -187,13 +187,14 @@ footer {
     width: 100%;
     max-width: 1200px;
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     position: absolute;
     bottom: 0;
+    padding: 0 15px;
 }
 
 footer a {
@@ -207,9 +208,10 @@ footer a {
     overflow: hidden;
     pointer-events: none;
     height: 65vh;
+    width: 100%;
 }
 
- .banner-image .banner-image-background-overlay {
+.banner-image .banner-image-background-overlay {
     position: absolute;
     top: 0;
     right: 0;
@@ -225,15 +227,6 @@ footer a {
     height: 100%;
     object-position: 50% 78%;
 }
-
-/* .banner-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url("team.jpg");
-    height: 50vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  } */
 
 .contact-section {
     justify-content: left;
@@ -311,3 +304,190 @@ label {
 .btn-wrap {
     float: right;
 }
+
+
+@media (max-width: 992px) {
+    footer {
+        position: relative;
+    }
+}
+
+
+.header {
+    width: 100%;
+    z-index: 3;
+    background-color: #fff;
+  }
+  
+  .header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  .header li a {
+    display: block;
+    padding: 20px 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .header li a:hover,
+  .header .menu-btn:hover {
+    background-color: #f4f4f4;
+  }
+  
+  .header .logo {
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 10px 0px;
+    text-decoration: none;
+  }
+  
+  /* menu */
+  
+  .header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+  }
+  
+  /* menu icon */
+  
+  .header .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+  }
+  
+  .header .menu-icon .navicon {
+    background: #333;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+  }
+  
+  .header .menu-icon .navicon:before,
+  .header .menu-icon .navicon:after {
+    background: #333;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+  }
+  
+  .header .menu-icon .navicon:before {
+    top: 5px;
+  }
+  
+  .header .menu-icon .navicon:after {
+    top: -5px;
+  }
+  
+  /* menu btn */
+  
+  .header .menu-btn {
+    display: none;
+  }
+  
+  .header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+  .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+  }
+  
+  /* 48em = 768px */
+  
+  @media (min-width: 48em) {
+    .header li {
+      float: left;
+    }
+    .header li a {
+      padding: 20px 15px;
+    }
+    .header .menu {
+      clear: none;
+      float: right;
+      max-height: none;
+    }
+    .header .menu-icon {
+      display: none;
+    }
+  }
+  
+
+@media  (max-width: 767px) {
+
+    .header {
+        position: fixed;
+    }
+
+    .banner-text h1 {
+        padding-top: 0;
+    }
+    .banner-text h2 {
+        font-size: 1.2em;
+    }
+    .banner-text p {
+        font-size: 1em;
+    }
+    .banner-text, 
+    .banner-image {
+        height: auto;
+        padding-top: 9rem;
+    }
+    .banner-image img {
+        height: auto;
+    }
+    .contact-section {
+        justify-content: center;
+    }
+    .contact-form {
+        width: 100%;
+    }
+    .form-control {
+        width: 100%;
+    }
+    .btn-wrap {
+        float: none;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    footer {
+        flex-wrap: wrap-reverse;
+    }
+
+    footer a {
+        display: block;
+        width: 100%;
+        padding: 5px 0;
+    }
+}
+
