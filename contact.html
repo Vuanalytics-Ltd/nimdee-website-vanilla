@@ -15,6 +15,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;300;400;500&family=Roboto:wght@700&&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet.css?v=1.0">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NXKGYGR9V"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1NXKGYGR9V');
+    </script>        
 </head>
 
 <body>
@@ -66,11 +75,14 @@
     </section>
 
     <footer>
-        <a>&copy; Nimdee 2021</a>
+        <a id="copyright">&copy; Nimdee </a>
         <a href="mailto:info@nimdee.co"> <i class="fas fa-envelope"></i> info@nimdee.co</a> 
 
         <a href="https://www.linkedin.com/company/nimdee/"> <i class="fab fa-linkedin-in"></i> Nimdee</a> 
-    </footer> 
+    </footer>
+
+    <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+    
     
     <script>
         const url = "https://app.nimdee.co/api/website/contact";
