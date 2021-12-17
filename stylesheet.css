@@ -426,8 +426,12 @@ label {
     .banner-text, 
     .banner-image {
         height: auto;
+        
+    }
+    .banner-text, .contact-section {
         padding-top: 9rem;
     }
+
     .banner-image img {
         height: auto;
     }
